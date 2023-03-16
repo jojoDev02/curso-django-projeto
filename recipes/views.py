@@ -25,6 +25,6 @@ def recipe(request, id):
         'is_page_details': True,
     })
 
-def search(resquest):
-    pass
+def search(request):
+    return render(request, 'recipes/pages/search.html')
 

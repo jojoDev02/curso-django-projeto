@@ -32,6 +32,10 @@ class RecipesViewsTest(TestCase):
         response = self.client.get(reverse('recipes:category', kwargs={'category_id' : 1}))
         self.assertEqual(response.status_code, 404)
 
+    def test_recipes_load_search_template(self):
+        response = self.client.get(reverse('recipes:search'))
+        self.assertTemplateUsed(response, 'recipes/pages/search.html')
+
 
     def test_recipe_load_home_template(self):
         response = self.client.get(reverse('recipes:home'))
