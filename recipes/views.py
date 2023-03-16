@@ -24,3 +24,4 @@ def recipe(request, id):
         'title' : recipe.title,
         'is_page_details': True,
     })
+
