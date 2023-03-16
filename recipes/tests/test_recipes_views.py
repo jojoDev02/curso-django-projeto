@@ -24,13 +24,18 @@ class RecipesViewsTest(TestCase):
         response = self.client.get(reverse('recipes:home'))
         self.assertEqual(response.status_code, 200)
     
-    def test_recipe_load_home_template(self):
-        response = self.client.get(reverse('recipes:home'))
-        self.assertTemplateUsed(response, 'recipes/pages/home.html')
+    def test_recipes_search_view_func_is_correct(self):
+        view = resolve(reverse('recipes:search'))
+        self.assertIs(view.func, views.search)
 
     def test_recipe_category_view_return_404_if_recipes_not_found(self):
         response = self.client.get(reverse('recipes:category', kwargs={'category_id' : 1}))
         self.assertEqual(response.status_code, 404)
+
+
+    def test_recipe_load_home_template(self):
+        response = self.client.get(reverse('recipes:home'))
+        self.assertTemplateUsed(response, 'recipes/pages/home.html') 
     
     def test_recipe_home_template_loads_recipes(self):
         category = Category.objects.create(name = 'Category')

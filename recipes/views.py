@@ -25,3 +25,6 @@ def recipe(request, id):
         'is_page_details': True,
     })
 
+def search(resquest):
+    pass
+
