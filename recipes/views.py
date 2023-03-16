@@ -13,7 +13,7 @@ def category(request, category_id):
 
     return render(request, 'recipes/pages/category.html', context={
         'recipes': recipes,
-        'title': recipes.first().category.name
+        'title': recipes[0].category.name
     })
 
 def recipe(request, id):
