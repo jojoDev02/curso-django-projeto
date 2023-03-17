@@ -36,6 +36,10 @@ class RecipesViewsTest(TestCase):
         response = self.client.get(reverse('recipes:search'))
         self.assertTemplateUsed(response, 'recipes/pages/search.html')
 
+    def test_recipe_raises_404_if_no_search_term(self):
+        response = self.client.get(reverse('recipes:search'))
+        self.assertEqual(response.status_code, 404)
+
 
     def test_recipe_load_home_template(self):
         response = self.client.get(reverse('recipes:home'))
